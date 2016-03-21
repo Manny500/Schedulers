@@ -11,6 +11,7 @@ public class Process{
   int burst_time;
   int arrival_time;
   int priority;
+  
   //constructor
   public Process(){
   }
@@ -21,7 +22,7 @@ public class Process{
     this.burst_time = burst_time;
     this.arrival_time = arrival_time;
     this.priority = priority;
-    
+   
   }
 ////////////////////////////METHODS//////////////////////////////////
   //start of methods
@@ -30,7 +31,7 @@ public class Process{
    */
   public int getPid(){
     
-    return this.pid = pid;;
+    return this.pid = pid;
   }//end of getPid
   
    /*

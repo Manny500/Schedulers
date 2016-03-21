@@ -11,15 +11,15 @@ public class Algorithms{
 
   
   //constructor
-  public Parse(){
+  public Algorithms(){
     
   }
   ////////////////////////////METHODS/////////////////////////////////////////////
   //start of methods
   
   /*
-   * @
-   * @
+   * @param
+   * @return
    * First Come First serve (fcfs) (nonPreemptive) scheduling algorithm
    */
   public void fcfs(){
