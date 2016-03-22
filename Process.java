@@ -24,13 +24,13 @@ public class Process{
     this.arrival_time = arrival_time;
     this.priority = priority;
     this.waitingTime = 0;
-   
+    
   }
 ////////////////////////////METHODS//////////////////////////////////
   //start of methods
-
+  
   /*
-   * @return gets the pid of the process
+   * @return int gets the pid of the process
    * will get the pid of the process
    */
   public int getPid(){
@@ -38,8 +38,8 @@ public class Process{
     return this.pid = pid;
   }//end of getPid
   
-   /*
-   * @return gets the Burst_time of the process
+  /*
+   * @return int gets the Burst_time of the process
    * will get the Burst_time of the process
    */
   public int getBurst_time(){
@@ -47,26 +47,26 @@ public class Process{
     return this.burst_time;
   }//end of getBurst_time
   
-   /*
-   * @param sets the Burst_time of the process
+  /*
+   * @param time sets the Burst_time of the process
    * will set the Burst_time of the process
    */
   public void setBurst_time(int time){
     
     this.burst_time = time;
   }//end of getBurst_time
-    
-   /*
-   * @return gets the Arrival_time of the process
+  
+  /*
+   * @return int gets the Arrival_time of the process
    * will get the Arrival_time of the process
    */
   public int getArrival_time(){
     
     return this.arrival_time;
   }//end of getArrival_time
-      
+  
   /*
-   * @return will get the waiting time
+   * @return int will get the waiting time
    * will get the waitingTime of the process
    */
   public int getWaitingTime(){
@@ -75,7 +75,7 @@ public class Process{
   }//end of getArrival_time
   
   /*
-   * @param will set the waiting time
+   * @param waiting will set the waiting time
    * will set the waitingTime of the process
    */
   public void setWaitingTime(int waiting){
@@ -84,7 +84,7 @@ public class Process{
   }//end of getArrival_time
   
   /*
-   * @return gets the Priority of the process
+   * @return int gets the Priority of the process
    * will get the Priority of the process
    */
   public int getPriority(){
