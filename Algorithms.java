@@ -103,6 +103,27 @@ public class Algorithms{
         
       }
       
+    }else if(order == "priority"){
+      
+      for (int i = 1; i < list.size(); i++){
+        
+        process = list.get(i);
+        int index = process.getPriority(); 
+        int j = i;
+        
+        while (j > 0 && list.get(j-1).getPriority() > index){
+          
+          Process process1 =list.get(j-1);
+          //list.remove(j);
+          list.set(j-1, process);
+          list.set(j,process1);
+          
+          j--;
+          
+        }
+        
+      }
+      
     }else if(order == "burst_time"){
       
       for (int i = 1; i < list.size(); i++){
@@ -380,6 +401,96 @@ public class Algorithms{
    */
   public void pnna(ArrayList<Process> list){
     
+    ArrayList<Process> queue = new ArrayList<Process>();
+    
+    time = 0;
+    
+    try{
+      
+      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      outFile.println("Output (pnna)");
+      outFile.println("");
+      
+      while(!list.isEmpty()){
+        
+        list = sort(list, "priority");
+        int x = 0;
+        
+        for(x = 0; x < list.size(); x++){
+          
+          if(list.get(x).getArrival_time() <= time ){
+            
+            process = list.get(x);
+            
+            break;
+          }
+        }
+        
+        arrival_time = process.getArrival_time();
+        burst_time = process.getBurst_time();
+        waitingTime = time - arrival_time;
+        process.setWaitingTime(waitingTime);
+        
+        while(burst_time != 0){
+          
+          burst_time --;
+          
+          outFile.println("Time: " + time + " process: " + process.getPid() + " running");
+          outFile.println("");
+          
+          //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
+          time ++;
+          
+        }
+        
+        queue.add(process);
+        list.remove(x);
+        
+        for(x = 0; x < list.size(); x++){
+          
+          if(list.get(x).getArrival_time() <= time ){
+            
+            int aging = list.get(x).getPriority();
+            
+            if(aging > 0){
+              
+              list.get(x).setPriority(aging - 1);
+              
+            }
+          }
+        }
+        
+      }
+      
+      for(int y = 0; y < queue.size(); y++){
+        
+        double wait = queue.get(y).getWaitingTime();
+        int priority = queue.get(y).getPriority();
+        addPriority = addPriority + priority;
+        weightedWaitingTime = (wait * queue.get(y).getPriority()) + weightedWaitingTime;
+        avgWaiting = avgWaiting + wait;
+        
+      }
+      
+      avgWaiting = avgWaiting / queue.size();
+      weightedWaitingTime =  weightedWaitingTime / addPriority;
+      responseTime = avgWaiting;
+      weightedResponseTime = weightedWaitingTime;
+      
+      //System.out.println(avgWaiting);
+      //System.out.println(weightedWaitingTime);
+      //System.out.println(responseTime);
+      //System.out.println(weightedResponseTime);
+      
+      outFile.println("Average waiting time is: "+ avgWaiting);
+      outFile.println("Average weighted waiting time is: "+ weightedWaitingTime);
+      outFile.println("Average reponse time is: "+ responseTime);
+      outFile.println("Average weighted reponse time is: "+ weightedResponseTime);
+      outFile.close();
+      
+    }catch(FileNotFoundException e){
+    }
+    
   }//end of pnna
   
   /*
@@ -388,6 +499,7 @@ public class Algorithms{
    * Priority (preprior) (Preemptive with aging) scheduling algorithm
    */
   public void pppa(ArrayList<Process> list){
+    
     
   }//end of pppa
   

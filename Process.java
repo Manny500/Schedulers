@@ -13,6 +13,7 @@ public class Process{
   int priority;
   int waitingTime;
   int originalBurst_time;
+  int originalPriority;
   
   //constructors
   public Process(){
@@ -26,6 +27,7 @@ public class Process{
     this.priority = priority;
     this.waitingTime = 0;
     this.originalBurst_time = burst_time;
+    this.originalPriority = priority;
     
   }
 ////////////////////////////METHODS//////////////////////////////////
@@ -75,6 +77,24 @@ public class Process{
     
     this.originalBurst_time = time;
   }//end of getBurst_time
+   
+  /*
+   * @return int gets the Burst_time of the process
+   * will get the Burst_time of the process
+   */
+  public int getOriginalPriority(){
+    
+    return this.originalPriority;
+  }//end of getBurst_time
+  
+   /*
+   * @param time sets the OriginalBurst_time of the process
+   * will set the OriginalBurst_time of the process
+   */
+  public void setOriginalPriority(int time){
+    
+    this.originalPriority = time;
+  }//end of getBurst_time
   
   /*
    * @return int gets the Arrival_time of the process
@@ -110,6 +130,15 @@ public class Process{
   public int getPriority(){
     
     return this.priority;
+  }//end of getPriority
+  
+  /*
+   * @param p sets the Priority of the process
+   * will get the Priority of the process
+   */
+  public void setPriority(int p){
+    
+   this.priority = p;
   }//end of getPriority
   
   //End of Methods

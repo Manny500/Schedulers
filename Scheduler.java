@@ -18,9 +18,9 @@ public class Scheduler{
     //alg.scheduler("fcfs", "Process.txt");
     //alg.scheduler("sjf", "Process.txt");
     //alg.scheduler("srtf", "Process.txt");
-    //alg.scheduler("pnna", "Process.txt");
+    alg.scheduler("pnna", "Process.txt");
     //alg.scheduler("pppa", "Process.txt");
-    alg.scheduler("rr", "Process.txt");
+    //alg.scheduler("rr", "Process.txt");
     //alg.scheduler("authorsChoice", "Process.txt");
     
   }//end of Main
