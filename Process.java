@@ -12,6 +12,7 @@ public class Process{
   int arrival_time;
   int priority;
   int waitingTime;
+  int originalBurst_time;
   
   //constructors
   public Process(){
@@ -24,6 +25,7 @@ public class Process{
     this.arrival_time = arrival_time;
     this.priority = priority;
     this.waitingTime = 0;
+    this.originalBurst_time = burst_time;
     
   }
 ////////////////////////////METHODS//////////////////////////////////
@@ -54,6 +56,24 @@ public class Process{
   public void setBurst_time(int time){
     
     this.burst_time = time;
+  }//end of getBurst_time
+  
+  /*
+   * @return int gets the Burst_time of the process
+   * will get the Burst_time of the process
+   */
+  public int getOriginalBurst_time(){
+    
+    return this.originalBurst_time;
+  }//end of getBurst_time
+  
+   /*
+   * @param time sets the OriginalBurst_time of the process
+   * will set the OriginalBurst_time of the process
+   */
+  public void setOriginalBurst_time(int time){
+    
+    this.originalBurst_time = time;
   }//end of getBurst_time
   
   /*
