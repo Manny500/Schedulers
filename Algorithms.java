@@ -111,7 +111,7 @@ public class Algorithms{
         int index = process.getPriority(); 
         int j = i;
         
-        while (j > 0 && list.get(j-1).getPriority() > index){
+        while (j > 0 && list.get(j-1).getPriority() < index){
           
           Process process1 =list.get(j-1);
           //list.remove(j);
@@ -148,8 +148,8 @@ public class Algorithms{
     }
     
     /*for (int i = 0; i < list.size(); i++){
-     * 
-     int t = list.get(i).getArrival_time();
+      
+     int t = list.get(i).getPriority();
      
      System.out.println("order? : " +t);
      
@@ -413,7 +413,7 @@ public class Algorithms{
       
       while(!list.isEmpty()){
         
-        list = sort(list, "priority");
+        //list = sort(list, "priority");
         int x = 0;
         
         for(x = 0; x < list.size(); x++){
@@ -454,7 +454,7 @@ public class Algorithms{
             
             if(aging > 0){
               
-              list.get(x).setPriority(aging - 1);
+              list.get(x).setPriority(aging + 1);
               
             }
           }
@@ -500,12 +500,99 @@ public class Algorithms{
    */
   public void pppa(ArrayList<Process> list){
     
+    ArrayList<Process> queue = new ArrayList<Process>();
+    time = 0;
     
+    try{
+      
+      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      outFile.println("Output (pppa)");
+      outFile.println("");
+      
+      while(!list.isEmpty()){
+        
+        list = sort(list, "priority");
+        
+        for(int x = 0; x < list.size(); x++){
+          
+          if(list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() > 0){
+            
+            process = list.get(x);
+            
+            break;
+          }else if(list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() == 0){
+            
+            waitingTime = (time - list.get(x).getArrival_time()) - list.get(x).getOriginalBurst_time();
+            list.get(x).setWaitingTime(waitingTime);
+            process = list.get(x);
+            queue.add(process);
+            list.remove(x);
+            
+          }
+        }
+        
+        arrival_time = process.getArrival_time();
+        burst_time = process.getBurst_time();       
+        burst_time --;        
+        
+        outFile.println("Time: " + time + " process: " + process.getPid() + " running");
+        outFile.println("");
+        
+        //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
+        
+        process.setBurst_time(burst_time);
+        
+        time ++;  
+        
+        for(int x = 0; x < list.size(); x++){
+          
+          if(list.get(x).getArrival_time() <= time ){
+            
+            int aging = list.get(x).getPriority();
+            
+            if(aging > 0){
+              
+              list.get(x).setPriority(aging + 1);
+              
+            }
+          }
+        }
+        
+      }
+      
+      for(int y = 0; y < queue.size(); y++){
+        
+        double wait = queue.get(y).getWaitingTime();
+        int priority = queue.get(y).getOriginalPriority();
+        addPriority = addPriority + priority;
+        weightedWaitingTime = (wait * queue.get(y).getOriginalPriority()) + weightedWaitingTime;
+        avgWaiting = avgWaiting + wait;
+        
+      }
+      avgWaiting = avgWaiting / queue.size();
+      weightedWaitingTime =  weightedWaitingTime / addPriority;
+      responseTime = avgWaiting;
+      weightedResponseTime = weightedWaitingTime;
+      
+      //System.out.println(avgWaiting);
+      //System.out.println(weightedWaitingTime);
+      //System.out.println(responseTime);
+      //System.out.println(weightedResponseTime);
+      
+      outFile.println("Average waiting time is: "+ avgWaiting);
+      outFile.println("Average weighted waiting time is: "+ weightedWaitingTime);
+      outFile.println("Average reponse time is: "+ responseTime);
+      outFile.println("Average weighted reponse time is: "+ weightedResponseTime);
+      
+      outFile.close();
+      
+    }catch(FileNotFoundException e){
+    }
   }//end of pppa
   
   /*
    * @
-   * @
+   * @ li
    * Round Robin (rr) (Different Times) scheduling algorithm
    */
   public void rr(ArrayList<Process> list){
@@ -556,7 +643,7 @@ public class Algorithms{
             outFile.println("Time: " + time + " process: " + process.getPid() + " running");
             outFile.println("");
             
-            System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
+            //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
             
             process.setBurst_time(burst_time);
             
@@ -571,9 +658,9 @@ public class Algorithms{
       for(int y = 0; y < queue.size(); y++){
         
         double wait = queue.get(y).getWaitingTime();
-        int priority = queue.get(y).getPriority();
+        int priority = queue.get(y).getOriginalPriority();
         addPriority = addPriority + priority;
-        weightedWaitingTime = (wait * queue.get(y).getPriority()) + weightedWaitingTime;
+        weightedWaitingTime = (wait * queue.get(y).getOriginalPriority()) + weightedWaitingTime;
         avgWaiting = avgWaiting + wait;
         
       }
@@ -582,10 +669,10 @@ public class Algorithms{
       responseTime = avgWaiting;
       weightedResponseTime = weightedWaitingTime;
       
-      System.out.println(avgWaiting);
-      System.out.println(weightedWaitingTime);
-      System.out.println(responseTime);
-      System.out.println(weightedResponseTime);
+      //System.out.println(avgWaiting);
+      //System.out.println(weightedWaitingTime);
+      //System.out.println(responseTime);
+      //System.out.println(weightedResponseTime);
       
       outFile.println("Average waiting time is: "+ avgWaiting);
       outFile.println("Average weighted waiting time is: "+ weightedWaitingTime);
