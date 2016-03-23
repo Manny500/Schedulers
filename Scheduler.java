@@ -3,13 +3,13 @@ import java.io.*;
 import java.util.*;
 
 /*
- * @Author Manny 
+ * @Author Manny + Conrad
  */
 
 public class Scheduler{
   public static void main(String[] args){
     
-    //Instanciate classes
+    //Instantiate classes
     Parse parse = new Parse();
     Algorithms alg = new Algorithms();
     
@@ -19,9 +19,9 @@ public class Scheduler{
     //alg.scheduler("sjf", "Process.txt");
     //alg.scheduler("srtf", "Process.txt");
     //alg.scheduler("pnna", "Process.txt");
-    alg.scheduler("pppa", "Process.txt");
+    //alg.scheduler("pppa", "Process.txt");
     //alg.scheduler("rr", "Process.txt");
-    //alg.scheduler("authorsChoice", "Process.txt");
+    alg.scheduler("hybrid", "Process.txt");
     
   }//end of Main
 }//end of Scheduler
