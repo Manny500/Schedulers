@@ -1,7 +1,7 @@
 import java.util.*;
 
 /*
- * @Author Manny 
+ * @Author Manny + Conrad 
  */
 
 public class Process{

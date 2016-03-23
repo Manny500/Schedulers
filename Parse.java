@@ -7,16 +7,17 @@ import java.util.*;
 
 public class Parse{
   
-  //instance  Variables
+  //Instance  Variables
   ArrayList<Process> list;
   Process process;
-  int pid;
   int burst_time;
   int arrival_time;
   int priority;
+  int pid;
   
-  //constructor
+  //Constructor
   public Parse(){
+    
     list = new ArrayList<Process>();
     
   }
@@ -81,8 +82,8 @@ public class Parse{
       System.out.println(e);
       
     } 
+    
   }//end of addToDataBase
   
-  //end of Methods
-  
+////////////////////////End of Methods//////////////////////////////////////////////////// 
 }//end of Parse

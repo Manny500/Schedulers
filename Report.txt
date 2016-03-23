@@ -1,0 +1,44 @@
+Besides the code to your scheduler please submit the following Report:
+
+1. A short introduction to the problem you are trying to solve.
+
+2. A description of the how each of the scheduling methods work, including your hybrid one.
+
+3. A description of your code design and your choice of data structures.
+4. Correctness Results - In this section you should present the results for each scheduler in the following way:
+
+	a. Show a small input file (around 4 processes).
+	b. Manually draw a Gantt Chart to represent the scheduling.
+
+		FCFS
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+
+		turnaround time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
+	c. Manually calculate the average waiting time and average response time.
+	d. Show the output of your algorithm to ensure correctness.
+
+5. Analysis Results - Using a larger input file (50 processes), show a table which compares the results of all different scheduling algorithms. In addition, for the rr algorithm show a graph of the different analysis measurements as a function of the quantum time. If your own scheduling algorithm has parameters as well, show how they affect the analysis measurements in a graph as well.
+
+6. Conclusion - Which algorithms worked the best and in what cases.
+
+7. An appendix describing which part of the project each team member was in charge of.
+
+8. References - If necessary.

@@ -6,16 +6,16 @@ import java.util.*;
 
 public class Process{
   
-  //instance Variables
-  int pid;
-  int burst_time;
-  int arrival_time;
-  int priority;
-  int waitingTime;
+  //Instance Variables
   int originalBurst_time;
   int originalPriority;
+  int arrival_time;
+  int waitingTime;
+  int burst_time;
+  int priority;
+  int pid;
   
-  //constructors
+  //Constructors
   public Process(){
   }
   
@@ -69,7 +69,7 @@ public class Process{
     return this.originalBurst_time;
   }//end of getBurst_time
   
-   /*
+  /*
    * @param time sets the OriginalBurst_time of the process
    * will set the OriginalBurst_time of the process
    */
@@ -77,7 +77,7 @@ public class Process{
     
     this.originalBurst_time = time;
   }//end of getBurst_time
-   
+  
   /*
    * @return int gets the Burst_time of the process
    * will get the Burst_time of the process
@@ -87,7 +87,7 @@ public class Process{
     return this.originalPriority;
   }//end of getBurst_time
   
-   /*
+  /*
    * @param time sets the OriginalBurst_time of the process
    * will set the OriginalBurst_time of the process
    */
@@ -138,9 +138,8 @@ public class Process{
    */
   public void setPriority(int p){
     
-   this.priority = p;
+    this.priority = p;
   }//end of getPriority
   
-  //End of Methods
-  
+////////////////////////End of Methods//////////////////////////////////////////////////// 
 }//end of process

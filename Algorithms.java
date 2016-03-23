@@ -7,25 +7,25 @@ import java.util.*;
 
 public class Algorithms{
   
-  //instance  Variables
-  Process process;
+  //Instance  Variables
   Parse parse = new Parse();
+  Process process;
+  double weightedWaitingTime;
+  double weightedResponseTime;
+  double avgWaiting = 0;
+  double responseTime;
   int burst_time;
   int arrival_time;
-  int time;
   int addPriority;
   int waitingTime;
-  double avgWaiting = 0;
-  double weightedWaitingTime;
-  double responseTime;
-  double weightedResponseTime;
-  int pid;
-  int burst;
-  int arrival;
-  int priority;
+  int time;
   int numProcesses;
+  int priority;
+  int arrival;
+  int burst;
+  int pid;
   
-  //constructor
+  //Constructor
   public Algorithms(){
     
   }
@@ -33,7 +33,8 @@ public class Algorithms{
   //start of methods
   
   /*
-   * @ file is the file name to write to 
+   * @param file is the file name to write to 
+   * will generate a list with random process with random attributes
    */
   public void randomProcessGenerator(String file){
     
@@ -118,6 +119,7 @@ public class Algorithms{
    */ 
   public ArrayList<Process> sort(ArrayList<Process> list, String order){
     
+    //lower values are first
     if(order == "arrival_time"){
       
       for (int i = 1; i < list.size(); i++){
@@ -129,7 +131,6 @@ public class Algorithms{
         while (j > 0 && list.get(j-1).getArrival_time() > index){
           
           Process process1 =list.get(j-1);
-          //list.remove(j);
           list.set(j-1, process);
           list.set(j,process1);
           j--;
@@ -138,6 +139,7 @@ public class Algorithms{
         
       }
       
+      //higher value priority is first
     }else if(order == "priority"){
       
       for (int i = 1; i < list.size(); i++){
@@ -149,7 +151,6 @@ public class Algorithms{
         while (j > 0 && list.get(j-1).getPriority() < index){
           
           Process process1 =list.get(j-1);
-          //list.remove(j);
           list.set(j-1, process);
           list.set(j,process1);
           
@@ -159,6 +160,7 @@ public class Algorithms{
         
       }
       
+      //lower values are first
     }else if(order == "burst_time"){
       
       for (int i = 1; i < list.size(); i++){
@@ -170,7 +172,6 @@ public class Algorithms{
         while (j > 0 && list.get(j-1).getBurst_time() > index){
           
           Process process1 =list.get(j-1);
-          //list.remove(j);
           list.set(j-1, process);
           list.set(j,process1);
           
@@ -181,14 +182,6 @@ public class Algorithms{
       }
       
     }
-    
-    /*for (int i = 0; i < list.size(); i++){
-     * 
-     int t = list.get(i).getPriority();
-     
-     System.out.println("order? : " +t);
-     
-     }*/
     
     return list;
   }//end of sort
@@ -203,7 +196,7 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("FCFS-Output.txt");
       outFile.println("Output (fcfs)");
       outFile.println("");
       
@@ -258,7 +251,11 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
+    
   }//end of fcfs
   
   /*
@@ -274,7 +271,7 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("SJF-Output.txt");
       outFile.println("Output (sjf)");
       outFile.println("");
       
@@ -341,6 +338,9 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
     
   }//end of sjf
@@ -359,7 +359,7 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("SRTF-Output.txt");
       outFile.println("Output (sjf)");
       outFile.println("");
       
@@ -425,13 +425,15 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
     
   }//end of srtf
   
   /*
-   * @
-   * @
+   * @param list is the ArrayList<Process> list of process to apply the pnna schedule to
    * Priority (nonpreprior) (nonPreemptive with aging) scheduling algorithm
    */
   public void pnna(ArrayList<Process> list){
@@ -442,13 +444,13 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("PNNA-Output.txt");
       outFile.println("Output (pnna)");
       outFile.println("");
       
       while(!list.isEmpty()){
         
-        //list = sort(list, "priority");
+        list = sort(list, "priority");//may need to be commented out
         int x = 0;
         
         for(x = 0; x < list.size(); x++){
@@ -524,13 +526,15 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
     
   }//end of pnna
   
   /*
-   * @
-   * @
+   * @param list is the ArrayList<Process> list of process to apply the pppa schedule to
    * Priority (preprior) (Preemptive with aging) scheduling algorithm
    */
   public void pppa(ArrayList<Process> list){
@@ -540,7 +544,7 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("PPPA-Output.txt");
       outFile.println("Output (pppa)");
       outFile.println("");
       
@@ -622,12 +626,15 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
+    
   }//end of pppa
   
   /*
-   * @
-   * @ li
+   * @param list is the ArrayList<Process> list of process to apply the rr schedule to
    * Round Robin (rr) (Different Times) scheduling algorithm
    */
   public void rr(ArrayList<Process> list){
@@ -639,7 +646,7 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("RR-Output.txt");
       outFile.println("Output (rr)");
       outFile.println("");
       
@@ -680,7 +687,7 @@ public class Algorithms{
             outFile.println("Time: " + time + " process: " + process.getPid() + " running");
             outFile.println("");
             
-            System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
+            //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
             
             process.setBurst_time(burst_time);
             
@@ -706,10 +713,10 @@ public class Algorithms{
       responseTime = avgWaiting;
       weightedResponseTime = weightedWaitingTime;
       
-      System.out.println(avgWaiting);
-      System.out.println(weightedWaitingTime);
-      System.out.println(responseTime);
-      System.out.println(weightedResponseTime);
+      //System.out.println(avgWaiting);
+      //System.out.println(weightedWaitingTime);
+      //System.out.println(responseTime);
+      //System.out.println(weightedResponseTime);
       
       outFile.println("Average waiting time is: "+ avgWaiting);
       outFile.println("Average weighted waiting time is: "+ weightedWaitingTime);
@@ -719,6 +726,9 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
     
   }//end of rr
@@ -737,11 +747,11 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("Process-Results.txt");
+      PrintWriter outFile = new PrintWriter("Hybrid-Output.txt");
       outFile.println("Output (hybrid)");
       outFile.println("");
       
-
+      
       while(!list.isEmpty()){
         
         int hipri = 0;//keeps track of where the highest priority is
@@ -845,10 +855,12 @@ public class Algorithms{
       outFile.close();
       
     }catch(FileNotFoundException e){
+      
+      System.out.println(e);
+      
     }
     
   }//end of hybrid
   
-  //end of Methods
-  
+////////////////////////End of Methods//////////////////////////////////////////////////// 
 }//end of Algorithms class

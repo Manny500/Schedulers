@@ -15,13 +15,15 @@ public class Scheduler{
     
     //start the different scheduling algorithms
     //They will write to an output file
-    //alg.scheduler("fcfs", "Process.txt");
-    //alg.scheduler("sjf", "Process.txt");
-    //alg.scheduler("srtf", "Process.txt");
-    //alg.scheduler("pnna", "Process.txt");
-    //alg.scheduler("pppa", "Process.txt");
-    //alg.scheduler("rr", "Process.txt");
-    alg.scheduler("hybrid", "Process.txt");
+    //alg.randomProcessGenerator("Large-Processes.txt");
+    
+    //alg.scheduler("fcfs", "Small-Processes.txt");
+    //alg.scheduler("sjf", "Small-Processes.txt");
+    //alg.scheduler("srtf", "Small-Processes.txt");
+    //alg.scheduler("pnna", "Small-Processes.txt");
+    //alg.scheduler("pppa", "Small-Processes.txt");
+    //alg.scheduler("rr", "Small-Processes.txt");
+    alg.scheduler("hybrid", "Small-Processes.txt");
     
   }//end of Main
 }//end of Scheduler
