@@ -19,6 +19,11 @@ public class Algorithms{
   double weightedWaitingTime;
   double responseTime;
   double weightedResponseTime;
+  int pid;
+  int burst;
+  int arrival;
+  int priority;
+  int numProcesses;
   
   //constructor
   public Algorithms(){
@@ -26,6 +31,36 @@ public class Algorithms{
   }
   ////////////////////////////METHODS/////////////////////////////////////////////
   //start of methods
+  
+  /*
+   * @ file is the file name to write to 
+   */
+  public void randomProcessGenerator(String file){
+    
+    try{
+      
+      PrintWriter outFile = new PrintWriter(file);
+      numProcesses = 50;
+      
+      for(int i = 1000; i < numProcesses+1000; i++){
+        
+        pid = i;
+        burst = (int)(Math.random() * 50 + 1);
+        arrival = (int)(Math.random() * 50);
+        priority = (int)(Math.random() * 50 + 1);
+        
+        outFile.println(pid+"\t "+burst+"\t "+arrival+"\t "+priority);
+      }
+      
+      outFile.close();
+      
+    }catch(Exception e){
+      
+      System.out.println(e);
+      
+    }
+    
+  }//end of randomProcessGenerator
   
   /*
    * @param algorthm specifies what scheduling algorithm to use
@@ -148,7 +183,7 @@ public class Algorithms{
     }
     
     /*for (int i = 0; i < list.size(); i++){
-      
+     * 
      int t = list.get(i).getPriority();
      
      System.out.println("order? : " +t);
@@ -615,14 +650,8 @@ public class Algorithms{
           if(list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() > 0){
             
             process = list.get(x);
-<<<<<<< HEAD
-           // Process process1 = process;
-           list.remove(x);
-           list.add(process);
-=======
             list.remove(x);
             list.add(process);
->>>>>>> 6b2dc72eafca64d943fd1d6cfa9d73cbfdb8ff1e
             
             break;
           }else if(list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() == 0){
@@ -695,8 +724,7 @@ public class Algorithms{
   }//end of rr
   
   /*
-   * @
-   * @
+   * @param list is the list with the process to schedule
    * An additional scheduling algorithm of your choice - 
    * this can be some sort of hybrid of the other approaches scheduling algorithm
    */
@@ -713,58 +741,54 @@ public class Algorithms{
       outFile.println("Output (hybrid)");
       outFile.println("");
       
-      
-      
-      while(!list.isEmpty())
-      {
+
+      while(!list.isEmpty()){
+        
         int hipri = 0;//keeps track of where the highest priority is
         boolean firstprocess = true;
         int loopsize = list.size()/2 +1;
         
-        for(int x = 0; x < loopsize; x++)
-        {
-          if(firstprocess
-            && list.get(x).getArrival_time() <= time 
-               && list.get(x).getBurst_time() > 0)
-          {
+        for(int x = 0; x < loopsize; x++){
+          
+          if(firstprocess && list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() > 0){
+            
             //takes the highest priority from the first half of the list
             process = list.get(x);
             hipri = x;
             firstprocess = false;
             
-          }else if(!firstprocess && 
-                   list.get(x).getPriority() > process.getPriority() 
-               && list.get(x).getArrival_time() <= time 
-               && list.get(x).getBurst_time() > 0)
-          {
+          }else if(!firstprocess && list.get(x).getPriority() > process.getPriority() 
+                     && list.get(x).getArrival_time() <= time 
+                     && list.get(x).getBurst_time() > 0){
+            
             process = list.get(x);
             hipri = x;
             
             
-          }else if(x==loopsize-1 
+          }else if(x == loopsize-1 
                      && process.getArrival_time() <= time 
-                     && process.getBurst_time() > 0)
-          {
-              list.remove(hipri);
-              list.add(process);
-              break;
+                     && process.getBurst_time() > 0){
+            
+            list.remove(hipri);
+            list.add(process);
+            break;
             
           }else if(list.get(x).getArrival_time() <= time 
-                     && list.get(x).getBurst_time() == 0)
-          {
-            //System.out.println("remove from list");
+                     && list.get(x).getBurst_time() == 0){
+            
             waitingTime = (time - list.get(x).getArrival_time()) - list.get(x).getOriginalBurst_time();
             list.get(x).setWaitingTime(waitingTime);
             process = list.get(x);
             queue.add(process);//adds to queue
             list.remove(x);//removes from list
             break;
-          }else if(firstprocess && x==loopsize-1 && loopsize<list.size()-1)
-          {
+            
+          }else if(firstprocess && x==loopsize-1 && loopsize<list.size()-1){
+            
             loopsize++;
             
-          }else if(x==list.size()-1 && list.get(x).getArrival_time() > time)
-          {
+          }else if(x==list.size()-1 && list.get(x).getArrival_time() > time){
+            
             time++;
           }
         }
@@ -772,11 +796,10 @@ public class Algorithms{
         arrival_time = process.getArrival_time();
         burst_time = process.getBurst_time(); 
         
-        for(int x = 0; x < 3; x++)//setting quantum to 3
-        {
+        //set quantum to 3
+        for(int x = 0; x < 3; x++){
           
-          if(burst_time > 0)
-          {
+          if(burst_time > 0){
             
             burst_time --;        
             
@@ -786,11 +809,9 @@ public class Algorithms{
             //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
             
             process.setBurst_time(burst_time);
-            //process.setPriority(process.getPriority()-1);//decrements priority as it runs
             
             time ++;  
-          }else
-          {
+          }else{
             
             break;
           }
