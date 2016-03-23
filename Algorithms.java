@@ -615,9 +615,9 @@ public class Algorithms{
           if(list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() > 0){
             
             process = list.get(x);
-            Process process1 = process;
-            list.remove(x);
-            list.add(process);
+           // Process process1 = process;
+           list.remove(x);
+           list.add(process);
             
             break;
           }else if(list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() == 0){
@@ -643,7 +643,7 @@ public class Algorithms{
             outFile.println("Time: " + time + " process: " + process.getPid() + " running");
             outFile.println("");
             
-            //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
+            System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
             
             process.setBurst_time(burst_time);
             
@@ -669,10 +669,10 @@ public class Algorithms{
       responseTime = avgWaiting;
       weightedResponseTime = weightedWaitingTime;
       
-      //System.out.println(avgWaiting);
-      //System.out.println(weightedWaitingTime);
-      //System.out.println(responseTime);
-      //System.out.println(weightedResponseTime);
+      System.out.println(avgWaiting);
+      System.out.println(weightedWaitingTime);
+      System.out.println(responseTime);
+      System.out.println(weightedResponseTime);
       
       outFile.println("Average waiting time is: "+ avgWaiting);
       outFile.println("Average weighted waiting time is: "+ weightedWaitingTime);
