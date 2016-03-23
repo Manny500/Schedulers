@@ -1,0 +1,27 @@
+//Imports
+import java.io.*;
+import java.util.*;
+
+/*
+ * @Author Conrad 
+ */
+
+public class RandomProcessGenerator{
+  public static void main(String[] args){
+    
+    try{
+      
+      PrintWriter outFile = new PrintWriter("Processes.txt");
+      outFile.println("Pid\tBurst Time\tArrival Time\tPriority");
+      
+      
+      
+      
+      outFile.close();
+      
+    }catch(Exception e){
+      System.out.println(e);
+    }
+    
+  }//end of Main
+}//end of RandomProcessGenerator

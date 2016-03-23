@@ -19,8 +19,13 @@ public class Scheduler{
     //alg.scheduler("sjf", "Process.txt");
     //alg.scheduler("srtf", "Process.txt");
     //alg.scheduler("pnna", "Process.txt");
+<<<<<<< HEAD
     //alg.scheduler("pppa", "Process.txt");
     alg.scheduler("rr", "Process.txt");
+=======
+    alg.scheduler("pppa", "Process.txt");
+    //alg.scheduler("rr", "Process.txt");
+>>>>>>> 6b2dc72eafca64d943fd1d6cfa9d73cbfdb8ff1e
     //alg.scheduler("authorsChoice", "Process.txt");
     
   }//end of Main

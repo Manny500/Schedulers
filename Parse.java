@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 /*
- * @Author Manny 
+ * @Author Manny + Conrad
  */
 
 public class Parse{
@@ -77,6 +77,9 @@ public class Parse{
       System.out.println("Invalid file path.");
       
     }catch (NumberFormatException e) {   
+      
+      System.out.println(e);
+      
     } 
   }//end of addToDataBase
   
