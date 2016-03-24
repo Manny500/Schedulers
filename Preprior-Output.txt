@@ -1,4 +1,4 @@
-Output (pnna)
+Output (Preprior)
 
 Time: 0 process: 102 running
 
@@ -14,7 +14,7 @@ Time: 5 process: 102 running
 
 Time: 6 process: 102 running
 
-Time: 7 process: 102 running
+Time: 7 process: 104 running
 
 Time: 8 process: 104 running
 
@@ -22,11 +22,11 @@ Time: 9 process: 104 running
 
 Time: 10 process: 104 running
 
-Time: 11 process: 104 running
+Time: 11 process: 103 running
 
-Time: 12 process: 103 running
+Time: 12 process: 102 running
 
-Time: 13 process: 103 running
+Time: 13 process: 101 running
 
 Time: 14 process: 103 running
 
@@ -34,9 +34,9 @@ Time: 15 process: 103 running
 
 Time: 16 process: 103 running
 
-Time: 17 process: 101 running
+Time: 17 process: 103 running
 
-Time: 18 process: 101 running
+Time: 18 process: 103 running
 
 Time: 19 process: 101 running
 
@@ -54,7 +54,11 @@ Time: 25 process: 101 running
 
 Time: 26 process: 101 running
 
-Average waiting time is: 9.458984375
-Average weighted waiting time is: 1.2776697957009582
-Average response time is: 9.458984375
-Average weighted response time is: 1.2776697957009582
+Time: 27 process: 101 running
+
+Time: 28 process: 101 running
+
+Average waiting time is: 10.11474609375
+Average weighted waiting time is: 0.6189805816308414
+Average response time is: 10.11474609375
+Average weighted response time is: 0.6189805816308414

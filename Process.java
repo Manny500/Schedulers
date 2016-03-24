@@ -11,12 +11,14 @@ public class Process{
   int originalPriority;
   int arrival_time;
   int waitingTime;
+  int responseTime;
   int burst_time;
   int priority;
   int pid;
   
   //Constructors
   public Process(){
+    
   }
   
   public Process( int pid, int burst_time, int arrival_time, int priority){
@@ -28,10 +30,29 @@ public class Process{
     this.waitingTime = 0;
     this.originalBurst_time = burst_time;
     this.originalPriority = priority;
+    this.responseTime = 0;
     
   }
 ////////////////////////////METHODS//////////////////////////////////
   //start of methods
+  
+  /*
+   * @return int gets the responseTime of the process
+   * will get the Burst_time of the process
+   */
+  public int getResponseTime(){
+    
+    return this.responseTime;
+  }//end of getBurst_time
+  
+  /*
+   * @param time sets the responseTime of the process
+   * will set the Burst_time of the process
+   */
+  public void setResponseTime(int time){
+    
+    this.responseTime = time;
+  }//end of getBurst_time
   
   /*
    * @return int gets the pid of the process

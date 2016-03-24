@@ -1,4 +1,4 @@
-Output (rr)
+Output (RR)
 
 Time: 0 process: 101 running
 

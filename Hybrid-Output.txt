@@ -1,4 +1,4 @@
-Output (hybrid)
+Output (Hybrid)
 
 Time: 0 process: 102 running
 

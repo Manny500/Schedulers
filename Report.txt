@@ -2,21 +2,96 @@ Besides the code to your scheduler please submit the following Report:
 
 1. A short introduction to the problem you are trying to solve.
 
+	Manny
+
 2. A description of the how each of the scheduling methods work, including your hybrid one.
 
+	Conrad
+
 3. A description of your code design and your choice of data structures.
+
+	Manny
+
 4. Correctness Results - In this section you should present the results for each scheduler in the following way:
 
 	a. Show a small input file (around 4 processes).
+
+		Small-process.txt:
+
+		101 10 0 1
+		102 8 0 3
+		103 5 5 5
+		104 4 7 10
+
 	b. Manually draw a Gantt Chart to represent the scheduling.
 
-		FCFS
+		FCFS - Manny
 
 				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
 				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
 				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
 
-		turnaround time:
+		SJF - Manny
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+
+		SRTF - Manny
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+
+		Nonpreprior - Conrad
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+		
+
+		Preprior - Conrad
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+
+		RR - Conrad
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+
+		Hybrid - Conrad
+
+				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
+				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
+				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+
+	c. Manually calculate the average waiting time and average response time.
+
+		FCFS - Manny
+	
+		Response time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15 
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
+		SJF - Manny
+	
+		Response time:
 		p1- 2
 		p2- 3
 		p3- 11
@@ -31,14 +106,135 @@ Besides the code to your scheduler please submit the following Report:
 		p5- 15
 
 		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
 
-	c. Manually calculate the average waiting time and average response time.
+ 		SRTF - Manny
+	
+		Response time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
+ 		Nonpreprior - Conrad
+	
+		Response time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
+ 		Preprior - Conrad
+	
+		Response time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
+ 		RR - Conrad
+	
+		Response time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2	
+
+ 		Hybrid - Conrad
+	
+		Response time:
+		p1- 2
+		p2- 3
+		p3- 11
+		p4- 15
+		p5- 20
+
+		waiting time:
+		p1- 0
+		p2- 2
+		p3- 3
+		p4- 11
+		p5- 15
+
+
+		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+
 	d. Show the output of your algorithm to ensure correctness.
+
+		FCFS: See FCFS-Output.txt
+
+		SJF: See SJF-Output.txt
+
+		SRTF: See SRTF-Output.txt
+		
+		Nonpreprior: See Nonpreprior-Output.txt
+
+		Preprior: See Preprior-Output.txt
+
+		RR: See RR-Output.txt
+		
+		Hybrid: See Hybrid-Output.txt
 
 5. Analysis Results - Using a larger input file (50 processes), show a table which compares the results of all different scheduling algorithms. In addition, for the rr algorithm show a graph of the different analysis measurements as a function of the quantum time. If your own scheduling algorithm has parameters as well, show how they affect the analysis measurements in a graph as well.
 
+	Conrad
+
 6. Conclusion - Which algorithms worked the best and in what cases.
+
+	Manny
 
 7. An appendix describing which part of the project each team member was in charge of.
 
+	Manny
+
 8. References - If necessary.
+
+	Manny

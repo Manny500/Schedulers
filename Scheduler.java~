@@ -13,16 +13,17 @@ public class Scheduler{
     Parse parse = new Parse();
     Algorithms alg = new Algorithms();
     
+    //generate Large process file, analysis purposes
+    alg.randomProcessGenerator("Large-Processes.txt");
+    
     //start the different scheduling algorithms
     //They will write to an output file
-    //alg.randomProcessGenerator("Large-Processes.txt");
-    
-    //alg.scheduler("fcfs", "Small-Processes.txt");
-    //alg.scheduler("sjf", "Small-Processes.txt");
-    //alg.scheduler("srtf", "Small-Processes.txt");
-    //alg.scheduler("pnna", "Small-Processes.txt");
-    //alg.scheduler("pppa", "Small-Processes.txt");
-    //alg.scheduler("rr", "Small-Processes.txt");
+    alg.scheduler("fcfs", "Small-Processes.txt");
+    alg.scheduler("sjf", "Small-Processes.txt");
+    alg.scheduler("srtf", "Small-Processes.txt");
+    alg.scheduler("pnna", "Small-Processes.txt");
+    alg.scheduler("pppa", "Small-Processes.txt");
+    alg.scheduler("rr", "Small-Processes.txt");
     alg.scheduler("hybrid", "Small-Processes.txt");
     
   }//end of Main
