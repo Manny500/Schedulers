@@ -2,7 +2,7 @@ Besides the code to your scheduler please submit the following Report:
 
 1. A short introduction to the problem you are trying to solve.
 
-	Manny
+	The object of this project was too find out which scheduling algorithms worked the best and in what cases. Different scheduling algorithms are used depending on the overall burst times, arrival times, and the level of priority that each process carries. Depending on what kind of a system the programmer is programming for, a certain scheduling algorithm would be more beneficial over another.
 
 2. A description of the how each of the scheduling methods work, including your hybrid one.
 
@@ -10,7 +10,7 @@ Besides the code to your scheduler please submit the following Report:
 
 3. A description of your code design and your choice of data structures.
 
-	Manny
+	Our program utilizes four major java classes in order to accomplish the task at hand. The classes are as follows: the process object class, the main scheduling class, the parsing class, and the algorithm class. The process class is used to create different processes/tasks, making them processes objects it is easier to assign and obtain information from the processes. The parsing is used to handle any incoming files containing processes, it stores and creates the new processes. To store the processes we choose to use ArrayList because of its flexibility and dynamic expansion and contraction. The algorithm class is where all the different scheduling algorithms are called from. This helps organize all the algorithms in one place. Lastly the scheduler class acts as our main and using the other classes it runs the algorithms’s analysis.
 
 4. Correctness Results - In this section you should present the results for each scheduler in the following way:
 
@@ -18,30 +18,42 @@ Besides the code to your scheduler please submit the following Report:
 
 		Small-process.txt:
 
-		101 10 0 1
-		102 8 0 3
-		103 5 5 5
-		104 4 7 10
+		p1: 101 10 0 1
+		p2: 102 8 0 3
+		p3: 103 5 5 5
+		p4: 104 4 7 10
 
 	b. Manually draw a Gantt Chart to represent the scheduling.
 
-		FCFS - Manny
+		FCFS -
 
-				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
-				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
-				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+				0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+				x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x  x
+				p1  p1  p1  p1  p1  p1  p1  p1  p1  p1 p2  p2  p2  p2  p2  p2  p2  p2  p3  p3 p3
 
-		SJF - Manny
+				21  22  23  24  25  26
+				x   x   x   x   x   x
+				p3  p3 p4  p4  p4  p4
 
-				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
-				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
-				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+		SJF -
 
-		SRTF - Manny
+				0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+				x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x  x
+				p2  p2  p2  p2  p2  p2  p2  p2  p4  p4  p4 p4  p3  p3  p3  p3  p3  p1  p1  p1  p1
 
-				1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18 19 20
-				x  x  x  x  x  x  x  x  x   x   x   x   x   x   x   x   x  x  x  x 
-				p1 p1 p2 p3 p3 p3 p3 p3 p3  p3  p3  p4  p4  p4  p4  p5 p5 p5 p5  p5
+				21  22  23  24  25  26 
+				x   x   x   x   x   x  
+				p1  p1  p1  p1  p1  p1 
+
+		SRTF - 
+
+				0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+				x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x  x
+				p2  p2  p2  p2  p2  p3  p2  p2  p4  p4  p4 p4  p3  p3  p3  p3  p3  p1  p1  p1  p1
+
+				21  22  23  24  25  26  27 
+				x   x   x   x   x   x   x   
+				p1  p1  p1  p1  p1  p1  p1
 
 		Nonpreprior - Conrad
 
@@ -70,142 +82,124 @@ Besides the code to your scheduler please submit the following Report:
 
 	c. Manually calculate the average waiting time and average response time.
 
-		FCFS - Manny
+		FCFS -
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
+		p1- 0
+		p2- 10
+		p3- 13
+		p4- 16
 
 		waiting time:
 		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15 
+		p2- 10
+		p3- 13
+		p4- 16
 
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 10 + 13 + 16) / 4 = 9.75
+		Average waiting time: (0 + 10 + 13 + 16) / 4 = 9.75
 
-		SJF - Manny
+		SJF -
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
+		p1- 17
+		p2- 0
+		p3- 7
+		p4- 1
 
 		waiting time:
-		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15
+		p1- 17
+		p2- 0
+		p3- 7
+		p4- 1
 
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (17 + 0 + 7 + 1) / 4 = 6.25
+		Average waiting time: (17 + 0+ 7 + 1) / 4 = 6.25
 
- 		SRTF - Manny
+ 		SRTF -
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
+		p1- 17
+		p2- 0
+		p3- 7
+		p4- 1
 
 		waiting time:
-		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15
+		p1- 17
+		p2- 0
+		p3- 7
+		p4- 1
 
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (17 + 0 + 7 + 1) / 4 = 6.25
+		Average waiting time: (17 + 0 + 7 + 1) / 4 = 6.25
 
  		Nonpreprior - Conrad
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
+		p1- 0
+		p2- 10
+		p3- 13
+		p4- 16
 
 		waiting time:
 		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15
+		p2- 10
+		p3- 13
+		p4- 16
 
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 10 + 13 + 16) / 4 = 9.75
+		Average waiting time: (0 + 10 + 13 + 16) / 4 = 9.75
 
  		Preprior - Conrad
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
+		p1- 0
+		p2- 10
+		p3- 13
+		p4- 16
 
 		waiting time:
 		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15
+		p2- 10
+		p3- 13
+		p4- 16
 
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 10 + 13 + 16) / 4 = 9.75
+		Average waiting time: (0 + 10 + 13 + 16) / 4 = 9.75
 
  		RR - Conrad
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
-
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		p1- 0
+		p2- 10
+		p3- 13
+		p4- 16
 
 		waiting time:
 		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15
+		p2- 10
+		p3- 13
+		p4- 16
 
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2	
+		Average response time: (0 + 10 + 13 + 16) / 4 = 9.75
+		Average waiting time: (0 + 10 + 13 + 16) / 4 = 9.75	
 
  		Hybrid - Conrad
 	
 		Response time:
-		p1- 2
-		p2- 3
-		p3- 11
-		p4- 15
-		p5- 20
+		p1- 0
+		p2- 10
+		p3- 13
+		p4- 16
 
 		waiting time:
 		p1- 0
-		p2- 2
-		p3- 3
-		p4- 11
-		p5- 15
+		p2- 10
+		p3- 13
+		p4- 16
 
-
-		Average waiting time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
-		Average response time: (0 + 2 + 3 + 11 + 15) / 5 = 6.2
+		Average response time: (0 + 10 + 13 + 16) / 4 = 9.75
+		Average waiting time: (0 + 10 + 13 + 16) / 4 = 9.75
 
 	d. Show the output of your algorithm to ensure correctness.
 

@@ -92,13 +92,13 @@ public class Algorithms{
       
       srtf(list);
       
-    }else if(algorithm == "pnna"){
+    }else if(algorithm == "nonpreprior"){
       
-      pnna(list);
+      nonpreprior(list);
       
-    }else if(algorithm == "pppa"){
+    }else if(algorithm == "preprior"){
       
-      pppa(list);
+      preprior(list);
       
     }else if(algorithm == "rr"){
       
@@ -433,10 +433,10 @@ public class Algorithms{
   }//end of srtf
   
   /*
-   * @param list is the ArrayList<Process> list of process to apply the pnna schedule to
+   * @param list is the ArrayList<Process> list of process to apply the nonpreprior schedule to
    * Priority (nonpreprior) (nonPreemptive with aging) scheduling algorithm
    */
-  public void pnna(ArrayList<Process> list){
+  public void nonpreprior(ArrayList<Process> list){
     
     ArrayList<Process> queue = new ArrayList<Process>();
     
@@ -444,8 +444,8 @@ public class Algorithms{
     
     try{
       
-      PrintWriter outFile = new PrintWriter("PNNA-Output.txt");
-      outFile.println("Output (pnna)");
+      PrintWriter outFile = new PrintWriter("Nonpreprior-Output.txt");
+      outFile.println("Output (Nonpreprior)");
       outFile.println("");
       
       while(!list.isEmpty()){
@@ -534,18 +534,18 @@ public class Algorithms{
   }//end of pnna
   
   /*
-   * @param list is the ArrayList<Process> list of process to apply the pppa schedule to
+   * @param list is the ArrayList<Process> list of process to apply the preprior schedule to
    * Priority (preprior) (Preemptive with aging) scheduling algorithm
    */
-  public void pppa(ArrayList<Process> list){
+  public void preprior(ArrayList<Process> list){
     
     ArrayList<Process> queue = new ArrayList<Process>();
     time = 0;
     
     try{
       
-      PrintWriter outFile = new PrintWriter("PPPA-Output.txt");
-      outFile.println("Output (pppa)");
+      PrintWriter outFile = new PrintWriter("Preprior-Output.txt");
+      outFile.println("Output (Preprior)");
       outFile.println("");
       
       while(!list.isEmpty()){
@@ -647,7 +647,7 @@ public class Algorithms{
     try{
       
       PrintWriter outFile = new PrintWriter("RR-Output.txt");
-      outFile.println("Output (rr)");
+      outFile.println("Output (RR)");
       outFile.println("");
       
       while(!list.isEmpty()){
@@ -748,7 +748,7 @@ public class Algorithms{
     try{
       
       PrintWriter outFile = new PrintWriter("Hybrid-Output.txt");
-      outFile.println("Output (hybrid)");
+      outFile.println("Output (Hybrid)");
       outFile.println("");
       
       

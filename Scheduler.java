@@ -18,13 +18,13 @@ public class Scheduler{
     
     //start the different scheduling algorithms
     //They will write to an output file
-    alg.scheduler("fcfs", "Small-Processes.txt");
-    alg.scheduler("sjf", "Small-Processes.txt");
+    //alg.scheduler("fcfs", "Small-Processes.txt");
+    //alg.scheduler("sjf", "Small-Processes.txt");
     alg.scheduler("srtf", "Small-Processes.txt");
-    alg.scheduler("nonpreprior", "Small-Processes.txt");
-    alg.scheduler("preprior", "Small-Processes.txt");
-    alg.scheduler("rr", "Small-Processes.txt");
-    alg.scheduler("hybrid", "Small-Processes.txt");
+    //alg.scheduler("nonpreprior", "Small-Processes.txt");
+    //alg.scheduler("preprior", "Small-Processes.txt");
+    //alg.scheduler("rr", "Small-Processes.txt");
+    //alg.scheduler("hybrid", "Small-Processes.txt");
     
   }//end of Main
 }//end of Scheduler

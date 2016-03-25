@@ -21,8 +21,8 @@ public class Scheduler{
     alg.scheduler("fcfs", "Small-Processes.txt");
     alg.scheduler("sjf", "Small-Processes.txt");
     alg.scheduler("srtf", "Small-Processes.txt");
-    alg.scheduler("pnna", "Small-Processes.txt");
-    alg.scheduler("pppa", "Small-Processes.txt");
+    alg.scheduler("nonpreprior", "Small-Processes.txt");
+    alg.scheduler("preprior", "Small-Processes.txt");
     alg.scheduler("rr", "Small-Processes.txt");
     alg.scheduler("hybrid", "Small-Processes.txt");
     
