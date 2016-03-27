@@ -49,7 +49,7 @@ Besides the code to your scheduler please submit the following Report:
 
 				0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
 				x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x  x
-				p2  p2  p2  p2  p2  p3  p2  p2  p4  p4  p4 p4  p3  p3  p3  p3  p3  p1  p1  p1  p1
+				p2  p2  p2  p2  p2  p2  p2  p2  p4  p4  p4 p4  p3  p3  p3  p3  p3  p1  p1  p1  p1
 
 				21  22  23  24  25  26 
 				x   x   x   x   x   x    
@@ -70,11 +70,11 @@ Besides the code to your scheduler please submit the following Report:
 
 				0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
 				x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x  x
-				p2  p2  p1  p2  p1  p2  p3  p4  p4  p4  p4 p1  p2  p3  p1  p2  p3  p1  p2  p3  p1
+				p2  p2  p2  p1  p1  p3  p3  p4  p4  p4  p4 p2  p2  p3  p1  p1  p3  p2  p2  p3  p1
 
 				21  22  23  24  25  26
 				x   x   x   x   x   x    
-				p2  p3  p1  p1  p1  p1
+				p1  p2  p1  p1  p1  p1
 
 		RR -
 
@@ -149,7 +149,7 @@ Besides the code to your scheduler please submit the following Report:
 		Average response time: (17 + 0 + 7 + 1) / 4 = 6.25
 		Average waiting time: (17 + 0 + 7 + 1) / 4 = 6.25
 
- 		Nonpreprior ---------------------------------------------------------------
+ 		Nonpreprior 
 	
 		Response time:
 		p1- 12
@@ -158,13 +158,13 @@ Besides the code to your scheduler please submit the following Report:
 		p4- 1
 
 		waiting time:
-		p1- 11
+		p1- 12
 		p2- 0
-		p3- 16
-		p4- 0
+		p3- 17
+		p4- 1
 
 		Average response time: (12 + 0 + 17 + 1) / 4 = 7.5
-		Average waiting time: (11 + 0 + 16 + 0) / 4 = 6.75
+		Average waiting time: (12 + 0 + 17 + 1) / 4 = 7.5
 
  		Preprior 
 	

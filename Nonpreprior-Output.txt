@@ -24,15 +24,15 @@ Time: 10 process: 104 running
 
 Time: 11 process: 104 running
 
-Time: 12 process: 103 running
+Time: 12 process: 101 running
 
-Time: 13 process: 103 running
+Time: 13 process: 101 running
 
-Time: 14 process: 103 running
+Time: 14 process: 101 running
 
-Time: 15 process: 103 running
+Time: 15 process: 101 running
 
-Time: 16 process: 103 running
+Time: 16 process: 101 running
 
 Time: 17 process: 101 running
 
@@ -44,17 +44,17 @@ Time: 20 process: 101 running
 
 Time: 21 process: 101 running
 
-Time: 22 process: 101 running
+Time: 22 process: 103 running
 
-Time: 23 process: 101 running
+Time: 23 process: 103 running
 
-Time: 24 process: 101 running
+Time: 24 process: 103 running
 
-Time: 25 process: 101 running
+Time: 25 process: 103 running
 
-Time: 26 process: 101 running
+Time: 26 process: 103 running
 
-Average waiting time is: 6.25
-Average weighted waiting time is: 3.9545454545454546
-Average response time is: 6.25
-Average weighted response time is: 3.9545454545454546
+Average waiting time is: 7.5
+Average weighted waiting time is: 5.631578947368421
+Average response time is: 4.75
+Average weighted response time is: 7.105263157894737
