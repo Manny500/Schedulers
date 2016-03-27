@@ -54,7 +54,7 @@ Time: 25 process: 102 running
 
 Time: 26 process: 102 running
 
-Average waiting time is: 18.7786865234375
-Average weighted waiting time is: 2.0116473423138905
-Average response time is: 18.7786865234375
-Average weighted response time is: 2.0116473423138905
+Average waiting time is: 16.25
+Average weighted waiting time is: 14.68421052631579
+Average response time is: 1.0
+Average weighted response time is: 1.105263157894737
