@@ -11,8 +11,8 @@ public class Parse{
   //Instance  Variables
   ArrayList<Process> list;
   Process process;
-  int burst_time;
   int arrival_time;
+  int burst_time;
   int priority;
   int pid;
   
@@ -23,7 +23,6 @@ public class Parse{
     
   }
   ////////////////////////////METHODS//////////////////////////////////
-  //start of methods
   
   /*
    * @return ArrayList<Process> list of process

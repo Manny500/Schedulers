@@ -22,7 +22,7 @@ public class Process{
     
   }
   
-  public Process( int pid, int burst_time, int arrival_time, int priority){
+  public Process(int pid, int burst_time, int arrival_time, int priority){
     
     this.pid = pid;
     this.burst_time = burst_time;
@@ -35,7 +35,6 @@ public class Process{
     
   }
 ////////////////////////////METHODS//////////////////////////////////
-  //start of methods
   
   /*
    * @return int gets the responseTime of the process

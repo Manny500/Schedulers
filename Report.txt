@@ -1,16 +1,37 @@
-Besides the code to your scheduler please submit the following Report:
+Project 2 Scheduling Algorithms Report:
 
 1. A short introduction to the problem you are trying to solve.
 
-	The object of this project was too find out which scheduling algorithms worked the best and in what cases. Different scheduling algorithms are used depending on the overall burst times, arrival times, and the level of priority that each process carries. Depending on what kind of a system the programmer is programming for, a certain scheduling algorithm would be more beneficial over another.
+	The objective of this project was too find out which scheduling algorithms worked the best and in what cases. Different scheduling algorithms are used depending on the overall burst times, arrival times, and the level of priority that each process carries. Depending on what kind of a system the programmer is programming for, a certain scheduling algorithm would be more beneficial over another. This project will try to answer the question of what algorithm to use depending on the programs needs and priorities.
 
 2. A description of the how each of the scheduling methods work, including your hybrid one.
 
-	Conrad
+
+	All algorithms are called from main using the scheduler method, which takes two parameters. The first parameter is a string that specifies what algorithm the user wants to use as a scheduler. The second parameter is a string that specifies that text file from where to obtain the list of processes.
+
+	FCFS:
+	
+		The FCFS algorithm is very straight forward. It will first sort the list (ArrayList) of processes in order of arrival time (from lowest to highest). That way the method can know the order of arrival. A for loop will go around and obtain the first process that has arrived, at this time the waiting and response times are set. The method will then proceed to run its complete burst time in a while loop, each time decrementing its burst time until its burst time is up (burst time equals to zero). Then it will go up to the for loop again and get the next process that has arrived, then repeating the previous steps it continues. The FCFS method will continue to run until the for loop reaches the end of the list and all process are finished (burst time equals to zero). The last thing the method does is calculate the average waiting and average response times using the previously set waiting and response times.
+
+	SJF:
+
+		The SJF algorithm is very similar to the FCFS algorithm. It will first sort the list (ArrayList) of processes in order of burst time (from lowest to highest). That way the method can know the order of the burst time. While the list is not empty a for loop will go around and obtain the first process that has arrived, at this time the waiting and response times are set. The method will then proceed to run its complete burst time in a while loop, each time decrementing its burst time until its burst time is up (burst time equals to zero). Before returning back to the for loop to look for the next shortest process, the method will remove the process from the original list and add it to a queue (ArrayList). Then it will go up to the for loop again and get the next process that has arrived, then repeating the previous steps it continues. The SJF method will continue to run until there are no process in the list and all process are finished (burst time equals to zero). The last thing the method does is calculate the average waiting and average response times using the previously set waiting and response times (obtains processes from the queue).
+
+	SRTF:
+
+		The SRTF algorithm is the first to have preemptive technology. It will first sort the list (ArrayList) of processes in order of burst time (from lowest to highest). That way the method can know the order of the burst time. While the list is not empty a for loop will go around and obtain the first process that has arrived, at this time the response times are set. The method will then proceed to run only one CPU cycle, at each cycle the method has to check if it is still the shortest burst time. The method then sorts the list again. It then goes back to the for loop to look for the next shortest process, if there is a process with burst time equal to zero the method will remove the process from the original list and add it to a queue (ArrayList). At this time the waiting time is calculated. The SRTF method will continue to run until there are no process in the list and all process are finished (burst time equals to zero). The last thing the method does is calculate the average waiting and average response times using the previously set waiting and response times (obtains processes from the queue).
+
+	Nonpreprior:
+
+	Preprior:
+
+	RR:
+
+	Hybrid:
 
 3. A description of your code design and your choice of data structures.
 
-	Our program utilizes four major java classes in order to accomplish the task at hand. The classes are as follows: the process object class, the main scheduling class, the parsing class, and the algorithm class. The process class is used to create different processes/tasks, making them processes objects it is easier to assign and obtain information from the processes. The parsing is used to handle any incoming files containing processes, it stores and creates the new processes. To store the processes we choose to use ArrayList because of its flexibility and dynamic expansion and contraction. The algorithm class is where all the different scheduling algorithms are called from. This helps organize all the algorithms in one place. Lastly the scheduler class acts as our main and using the other classes it runs the algorithms’s analysis.
+	Our program utilizes four major Java classes in order to accomplish the task at hand. The title of the classes are as follows: the PROCESS object class, the main SCHEDULER class, the PARSE class, and the ALGORITHMS class. The process class is used to create different processes/tasks. We decided to make the processes objects, it is easier to assign and obtain information from the processes that way. The parsing class is used to handle any incoming files containing processes, it stores and creates the new processes in a database. To store the processes (our database) we choose to use ArrayList because of its flexibility and dynamic expansion and contraction. The algorithm class is where all the different scheduling algorithms are coded and called from. This helps organize all the scheduling algorithms in one place. Lastly the scheduler class acts as our main and using the other classes it runs the algorithms’s analysis. Note: Each scheduling algorithm should be run separately in order to avoid any mistakes, since the process from the database are constantly being changed.
 
 4. Correctness Results - In this section you should present the results for each scheduler in the following way:
 
@@ -169,7 +190,7 @@ Besides the code to your scheduler please submit the following Report:
  		Preprior 
 	
 		Response time:
-		p1- 2
+		p1- 3
 		p2- 0
 		p3- 0
 		p4- 0
@@ -180,7 +201,7 @@ Besides the code to your scheduler please submit the following Report:
 		p3- 12
 		p4- 0
 
-		Average response time: (2 + 0 + 0 + 0) / 4 = 0.5
+		Average response time: (3 + 0 + 0 + 0) / 4 = 0.75
 		Average waiting time: (16 + 13 + 12 + 0) / 4 = 10.25
 
  		RR 
@@ -198,7 +219,7 @@ Besides the code to your scheduler please submit the following Report:
 		p4- 7
 
 		Average response time: (0 + 2 + 3 + 3) / 4 = 2.0
-		Average waiting time: (16 + 15 + 14 + 7) / 4 = 	13.0
+		Average waiting time: (16 + 15 + 14 + 7) / 4 = 13.0
 
  		Hybrid 
 	
@@ -235,7 +256,7 @@ Besides the code to your scheduler please submit the following Report:
 
 5. Analysis Results - Using a larger input file (50 processes), show a table which compares the results of all different scheduling algorithms. In addition, for the rr algorithm show a graph of the different analysis measurements as a function of the quantum time. If your own scheduling algorithm has parameters as well, show how they affect the analysis measurements in a graph as well.
 
-	---Using "Large-Processes.txt", RR Quantum = 2, Hybrid Quantum = 3
+	Using "Large-Processes.txt", RR Quantum = 2, Hybrid Quantum = 3:
 
 	Algorithm:	FCFS	SJF	SRTF	NP	P	RR	H
 	
@@ -247,11 +268,7 @@ Besides the code to your scheduler please submit the following Report:
 	
 	Weighted Wait:	480.96	459.31	81.89	167.60	57.24	85.91	44.97
 	
-	--Quantum Graphs in "quantum_graphs.xlsx"
-	
-	
-	
-	
+	--Quantum Graphs in "quantum_graphs.xlsx"	
 
 6. Conclusion - Which algorithms worked the best and in what cases.
 
@@ -259,8 +276,15 @@ Besides the code to your scheduler please submit the following Report:
 
 7. An appendix describing which part of the project each team member was in charge of.
 
-	Manny
+	- Manny was in charge of designing the program and writing the skeleton for all the algorithms and classes.
+	- Manny designed and coded the FCFS, SJF, and SRTF scheduling algorithms
+	- Advised and made sure each of the algorithms was supposed to work as intended
+
+	- Conrad designed and coded the Nonpreprior, Preprior, RR, and Hybrid scheduling algorithms
+	- Conrad was in charge of analyzing all the algorithms with a large process file
+	- Conrad tested RR, and Hybrid with different quantum times
 
 8. References - If necessary.
 
-	Manny
+	Manny - tenoriom@lafayette.edu
+	Conrad - stoerkec@lafayette.edu
