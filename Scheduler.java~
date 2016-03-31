@@ -1,4 +1,5 @@
 //Imports
+//Imports
 import java.io.*;
 import java.util.*;
 
@@ -14,7 +15,7 @@ public class Scheduler{
     Algorithms alg = new Algorithms();
     
     //generate Large process file, analysis purposes
-    //alg.randomProcessGenerator("Large-Processes.txt");
+    //alg.randomProcessGenerator(50, "Large-Processes.txt");
     
     //alg.scheduler("fcfs", "Large-Processes.txt");
     //alg.scheduler("sjf", "Large-Processes.txt");
@@ -25,6 +26,7 @@ public class Scheduler{
     //alg.scheduler("hybrid", "Large-Processes.txt");
     
     //start the different scheduling algorithms
+    //should run each separatly
     //They will write to an output file
     //alg.scheduler("fcfs", "Small-Processes.txt");
     //alg.scheduler("sjf", "Small-Processes.txt");

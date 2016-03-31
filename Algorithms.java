@@ -301,6 +301,12 @@ public class Algorithms{
       
       outFile.close();
       
+      //clearing the list so that other scheduling algorithms may use it
+      while(list.size() > 0)
+      {
+        list.remove(0);
+      }
+      
     }catch(FileNotFoundException e){
       
       System.out.println(e);
@@ -315,10 +321,6 @@ public class Algorithms{
    */
   public void sjf(ArrayList<Process> list){
     
-    //instance variables
-    list = sort(list, "burst_time");
-    ArrayList<Process> queue = new ArrayList<Process>();
-    
     weightedResponseTime = 0;
     weightedWaitingTime = 0;
     avgResponse = 0;
@@ -326,7 +328,13 @@ public class Algorithms{
     avgWaiting = 0;
     time = 0;
     
-    //write inside a try to maake sure all errors are handled
+    //instance variables
+    list = sort(list, "burst_time");
+    ArrayList<Process> queue = new ArrayList<Process>();
+    
+    
+    
+    //write inside a try to make sure all errors are handled
     try{
       
       //print results to specific txt file
@@ -838,7 +846,6 @@ public class Algorithms{
       PrintWriter outFile = new PrintWriter("RR-Output.txt");
       outFile.println("Output (RR)");
       outFile.println("");
-      
       //everytime a process finishes it is removed from the list
       while(!list.isEmpty()){
         
@@ -850,7 +857,6 @@ public class Algorithms{
             process = list.get(x);
             list.remove(x);
             list.add(process);
-            
             //set the response time
             if(process.getBurst_time() == process.getOriginalBurst_time()){
               
@@ -869,6 +875,8 @@ public class Algorithms{
             queue.add(process);
             list.remove(x);
             
+            
+            
           }else if(x==list.size()-1 && list.get(x).getArrival_time() > time){
             
             time++;
@@ -879,7 +887,8 @@ public class Algorithms{
         burst_time = process.getBurst_time(); 
         
         //run the process for a specific quantum
-        for(int x = 0; x < quantum; x++){
+        for(int x = 0; x < quantum; x++)
+        {
           
           if(burst_time > 0){
             
@@ -892,10 +901,22 @@ public class Algorithms{
             
             process.setBurst_time(burst_time);
             
+            if(process.getBurst_time() == 0)
+            {
+              waitingTime = (time - process.getArrival_time()) - process.getOriginalBurst_time();
+              process.setWaitingTime(waitingTime);
+              queue.add(process);
+              list.remove(list.indexOf(process));
+              
+              //System.out.println("Pid: "+process.getPid()+"\ntime: "+ time+"\nwaiting time: "+waitingTime);
+            }
+            
             time ++;  
             
-          }else{
+          }else
+          {
             
+            //System.out.println(time+" = time, waiting time: "+waitingTime);
             break;
           }
         }
@@ -906,6 +927,8 @@ public class Algorithms{
         
         //get wait and response of each process
         double wait = queue.get(y).getWaitingTime();
+        //System.out.println(wait+" "+queue.get(y).getPid());
+        
         double response = queue.get(y).getResponseTime();
         int priority = queue.get(y).getPriority();
         
@@ -915,6 +938,8 @@ public class Algorithms{
         weightedResponseTime = (response * queue.get(y).getPriority()) + weightedResponseTime;
         avgWaiting = avgWaiting + wait;
         avgResponse = avgResponse + response;
+        
+        
         
       }
       
@@ -951,7 +976,7 @@ public class Algorithms{
    */
   public void hybrid(ArrayList<Process> list){
     
-    list = sort(list, "priority");
+    list = sort(list, "arrival_time");
     ArrayList<Process> queue = new ArrayList<Process>();
     
     weightedResponseTime = 0;
@@ -969,21 +994,27 @@ public class Algorithms{
       outFile.println("Output (Hybrid)");
       outFile.println("");
       
-      
+      int first = 0;//only used for printing/testing
       while(!list.isEmpty()){
         
         int hipri = 0;//keeps track of where the highest priority is
         boolean firstprocess = true;
-        int loopsize = list.size()/2 +1;
+        int loopsize = list.size()/2 + 1;
         
-        for(int x = 0; x < loopsize; x++){
+        for(int x = 0; x < loopsize; x++)
+        {
           
-          if(firstprocess && list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() > 0){
+          loopsize = list.size()/2 + 1;
+          
+          if(firstprocess && list.get(x).getArrival_time() <= time && list.get(x).getBurst_time() > 0)
+          {
             
             //takes the highest priority from the first half of the list
             process = list.get(x);
             hipri = x;
             firstprocess = false;
+            
+            
             
           }else if(!firstprocess && list.get(x).getPriority() > process.getPriority() 
                      && list.get(x).getArrival_time() <= time 
@@ -993,18 +1024,21 @@ public class Algorithms{
             hipri = x;
             
             
-          }else if(x == loopsize-1 
+          }else if(!firstprocess && x == loopsize-1 
                      && process.getArrival_time() <= time 
                      && process.getBurst_time() > 0){
             
-            list.remove(hipri);
-            list.add(process);
+            process = list.remove(hipri);
             
-            if(process.getBurst_time() == process.getOriginalBurst_time()){
+            
+            if(process.getBurst_time() == process.getOriginalBurst_time())
+            {
               
               process.setResponseTime((time - process.getArrival_time()));
               
             }
+            
+            list.add(process);
             
             break;
             
@@ -1015,21 +1049,16 @@ public class Algorithms{
             list.get(x).setWaitingTime(waitingTime);
             process = list.get(x);
             
-            if(process.getBurst_time() == process.getOriginalBurst_time()){
-              
-              process.setResponseTime((time - process.getArrival_time()));
-              
-            }
             
             
-            queue.add(process);//adds to queue
+            queue.add(list.get(x));//adds to queue
             list.remove(x);//removes from list
-            
-            
             
             break;
             
+            
           }else if(firstprocess && x==loopsize-1 && loopsize<list.size()-1){
+            
             
             loopsize++;
             
@@ -1042,7 +1071,7 @@ public class Algorithms{
         arrival_time = process.getArrival_time();
         burst_time = process.getBurst_time(); 
         
-        //set quantum to 3
+        //set quantum to quantum
         for(int x = 0; x < quantum; x++){
           
           if(burst_time > 0){
@@ -1055,6 +1084,17 @@ public class Algorithms{
             //System.out.println("Time: "+ time + " process: " + process.getPid() + " running");
             
             process.setBurst_time(burst_time);
+            //process.setPriority(process.getPriority()-1);
+            
+            if(process.getBurst_time() == 0)
+            {
+              waitingTime = (time - process.getArrival_time()) - process.getOriginalBurst_time();
+              process.setWaitingTime(waitingTime);
+              queue.add(process);
+              list.remove(list.indexOf(process));
+              
+              //System.out.println("Pid: "+process.getPid()+"\ntime: "+ time+"\nwaiting time: "+waitingTime);
+            }
             
             time ++;  
           }else{
