@@ -248,7 +248,7 @@ Project 2 Scheduling Algorithms Report:
 
 	d. Show the output of your algorithm to ensure correctness.
 	
-			In the folder: "/Small-Process-Output"
+	In the folder: "/Small-Process-Output"
 
 		FCFS: See FCFS-Output.txt
 
@@ -266,7 +266,7 @@ Project 2 Scheduling Algorithms Report:
 
 5. Analysis Results - Using a larger input file (50 processes), show a table which compares the results of all different scheduling algorithms. In addition, for the rr algorithm show a graph of the different analysis measurements as a function of the quantum time. If your own scheduling algorithm has parameters as well, show how they affect the analysis measurements in a graph as well.
 
-	Using "Large-Processes.txt", Quantum = 2:
+	Using "Large-Processes.txt", Quantum* = 2:
 
 	Algorithm:	FCFS	SJF	SRTF	NonPre	Prepri	RR	Hybrid
 	
@@ -278,11 +278,11 @@ Project 2 Scheduling Algorithms Report:
 	
 	Weighted Wait:	480.96	327.41	324.63	467.73	730.07	624.56	395.72
 	
-	--Quantum Graphs in "quantum_graphs.xlsx"	
+	*Quantum Graphs in "quantum_graphs.xlsx"	
 
 6. Conclusion - Which algorithms worked the best and in what cases.
 
-	Manny
+	The objective of this project was too find out which scheduling algorithms worked the best and in what cases. What the data from our large input file shows is that the algorithm with the best overall times was SRTF (Shortest Remaining Time First) a preemptive algorithm. The SJF algorithm was a close second for overall effectiveness. Hence for a program that needs to run smoothly and has no specific requirements the SRTF algorithm would be the way to go. However, if cases where response time is extremely important the best algorithm to use is RR (Round Robin) using a small quantum, it has the smallest average response by far. As our graph in "quantum_graphs.xlsx” shows the higher the quantum the longer it would take a particular process to respond. Lastly if the program is per say in charge of the breaks in a car the best algorithm to use is preprior. With a small process list which a car might typically have the preprior algorithm has the fastest response time, which is good so the car break on time. Now in order for the algorithm to take the breaks seriously they must have a large priority, I would assume breaking is a very high priority. In a small list of process the best algorithm to use is our hybrid algorithm beating out all the other in response and specially waiting time (except for preprior). For overall smooth scheduling the SJF and the SRTF algorithm have some of the best average waiting and response time, just as it behaved with a large amount of processes. 
 
 7. An appendix describing which part of the project each team member was in charge of.
 
@@ -291,10 +291,11 @@ Project 2 Scheduling Algorithms Report:
 	- Advised and made sure each of the algorithms was supposed to work as intended
 
 	- Conrad designed and coded the Nonpreprior, Preprior, RR, and Hybrid scheduling algorithms
-	- Conrad was in charge of analyzing all the algorithms with a large process file
+	- Conrad was in charge of analyzing all the algorithms with a large process file / making sure they work
 	- Conrad tested RR, and Hybrid with different quantum times
 
 8. References - If necessary.
 
 	Manny - tenoriom@lafayette.edu
 	Conrad - stoerkec@lafayette.edu
+	Any files mentioned in the report are included in the same folder

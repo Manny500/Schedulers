@@ -102,6 +102,7 @@ Average waiting time is: 9.75
 Average weighted waiting time is: 13.421052631578947
 Average reponse time is: 9.75
 Average weighted reponse time is: 13.421052631578947
+
 Example Output (preprior)
 Time: 0, process 102 running
 Time: 1, process 102 running

@@ -17,7 +17,7 @@ public class Scheduler{
     //generate Large process file, analysis purposes
     //alg.randomProcessGenerator(50, "Large-Processes.txt");
 //    
-    alg.scheduler("fcfs", "Large-Processes.txt");
+//   alg.scheduler("fcfs", "Large-Processes.txt");
 //    alg.scheduler("sjf", "Large-Processes.txt");
 //    alg.scheduler("srtf", "Large-Processes.txt");
 //    alg.scheduler("nonpreprior", "Large-Processes.txt");
