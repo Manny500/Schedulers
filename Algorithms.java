@@ -746,7 +746,8 @@ public class Algorithms{
         }
         
         //prevents last process from going more than its share
-        if(list.size() > 0){
+        if(list.size() > 0)
+        {
           
           arrival_time = process.getArrival_time();
           burst_time = process.getBurst_time();       
@@ -827,7 +828,8 @@ public class Algorithms{
    * @param list is the ArrayList<Process> list of process to apply the rr schedule to
    * Round Robin (rr) (Different Times) scheduling algorithm
    */
-  public void rr(ArrayList<Process> list){
+  public void rr(ArrayList<Process> list)
+  {
     
     list = sort(list, "arrival_time");
     ArrayList<Process> queue = new ArrayList<Process>();

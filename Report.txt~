@@ -22,12 +22,20 @@ Project 2 Scheduling Algorithms Report:
 		The SRTF algorithm is the first to have preemptive technology. It will first sort the list (ArrayList) of processes in order of burst time (from lowest to highest). That way the method can know the order of the burst time. While the list is not empty a for loop will go around and obtain the first process that has arrived, at this time the response times are set. The method will then proceed to run only one CPU cycle, at each cycle the method has to check if it is still the shortest burst time. The method then sorts the list again. It then goes back to the for loop to look for the next shortest process, if there is a process with burst time equal to zero the method will remove the process from the original list and add it to a queue (ArrayList). At this time the waiting time is calculated. The SRTF method will continue to run until there are no process in the list and all process are finished (burst time equals to zero). The last thing the method does is calculate the average waiting and average response times using the previously set waiting and response times (obtains processes from the queue).
 
 	Nonpreprior:
+	
+		The Nonpreprior algorithm will start by sorting the list of processes by priority, our sorting algorithm uses insertion sort to do this. It will then loop through the list to find the highest priority process that has arrived, and run that process completely. While that process is running, any other process that has arrived at the cpu will have its priority increase while it's waiting, this is what we call aging. When the process finishes it is added to the queue and removed from the list. Next we go back and sort the list by priority again and repeat the steps. After the list is empty we loop through the queue and calculate the average waiting and response times, as well as the weighted waiting and response times. It is fairly simple because each process sets the response time when it starts to run.
 
 	Preprior:
+	
+		Preprior is very similar to nonpreprior, however there is one key difference and this is that during each unit of cpu time the scheduler will run the process with the highest priority. This means that unlike nonpreprior the scheduler is constantly switching between processes and running the highest priority. Aging plays a much larger role here than it does in Nonpreprior because the priorities are constantly being checked. Waiting time is calculated by each process keeping track of when it has arrived but isn't running, and response time is recorded when a process first runs in the cpu.
 
 	RR:
+	
+		The Round Robin algorithm starts with sorting the list by arrival time. It will then loop through the list and run each process, once it has arrived, for a specified time quantum (our quantum is set to 2) and then move it to the end of the list. In this manner the scheduler will evenly run through all of the processes. Waiting and response time are calculated in a similar way to preprior, keeping track of the values for each process and then taking the averages at the end. 
 
 	Hybrid:
+	
+		Simply put our Hybrid algorithm is a mix between round robin and preprior. It will sort the list by arrival time and then run the highest priority process from the first half of the list for a specified time quantum. Once the time quantum is up, the process will be moved to the end of the list and it will run the highest priority process from the first half again. If no process has arrived then it will look in the second half of the list. When a process completes it is removed from the list and added to the queue. These steps will repeat until all processes have been completed, and then average times are calculated at the end in the same way as round robin because the processes keep track of each individual waiting and response time respectively.
 
 3. A description of your code design and your choice of data structures.
 
@@ -239,6 +247,8 @@ Project 2 Scheduling Algorithms Report:
 		Average waiting time: (16 + 10 + 2 + 5) / 4 = 8.25
 
 	d. Show the output of your algorithm to ensure correctness.
+	
+			In the folder: /Small-Process-Output
 
 		FCFS: See FCFS-Output.txt
 
@@ -256,17 +266,17 @@ Project 2 Scheduling Algorithms Report:
 
 5. Analysis Results - Using a larger input file (50 processes), show a table which compares the results of all different scheduling algorithms. In addition, for the rr algorithm show a graph of the different analysis measurements as a function of the quantum time. If your own scheduling algorithm has parameters as well, show how they affect the analysis measurements in a graph as well.
 
-	Using "Large-Processes.txt", RR Quantum = 2, Hybrid Quantum = 3:
+	Using "Large-Processes.txt", Quantum = 2:
 
-	Algorithm:	FCFS	SJF	SRTF	NP	P	RR	H
+	Algorithm:	FCFS	SJF	SRTF	NonPre	Prepri	RR	Hybrid
 	
-	Avg Resp Time:	494.86	649.84	81.23	543.98	527.05	674.64	543.45
+	Avg Resp Time:	494.86	306.30	303.32	493.26	335.22	22.08	202.9
 	
-	Weighted Resp:	480.96	459.31	303.32	167.60	57.24	85.91	44.97
+	Weighted Resp:	480.96	325.90	324.63	467.73	436.47	21.43	88.76
 	
-	Avg Wait Time:	494.86	649.84	318.45	543.98	527.05	674.64	543.45
+	Avg Wait Time:	494.86	306.62	305.46	493.26	583.82	614.56	536.38
 	
-	Weighted Wait:	480.96	459.31	81.89	167.60	57.24	85.91	44.97
+	Weighted Wait:	480.96	327.41	324.63	467.73	730.07	624.56	395.72
 	
 	--Quantum Graphs in "quantum_graphs.xlsx"	
 
